@@ -1,30 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Dark luxury theme for art collectors */
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #1a1a1a;
+  /* Luxury art marketplace color palette */
+  --background: #000000;        /* Rich black */
+  --foreground: #ffffff;        /* Pure white */
+  --card: #1a1a1a;             /* Charcoal */
+  
   --card-foreground: #ffffff;
   --muted: #333333;
-  --muted-foreground: #a3a3a3;
-  --accent: #d4af37; /* Luxury gold */
+  --muted-foreground: #cccccc;  /* Light gray */
+  --accent: #d4af37;           /* Luxury gold */
   --accent-foreground: #000000;
   --primary: #ffffff;
   --primary-foreground: #000000;
   --border: #333333;
   --ring: #d4af37;
+  --success: #4a9eff;          /* Cosmic blue */
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    letter-spacing: -0.01em;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Luxury button styles */
+  .btn-luxury {
+    @apply relative overflow-hidden;
+    background: linear-gradient(to right, #d4af37, #eab308);
+    @apply text-black font-semibold tracking-wide;
+    @apply px-8 py-4 rounded-none;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-2xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+  
+  .btn-luxury::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(to right, transparent, white, transparent);
+    @apply opacity-0 transition-opacity duration-300;
+    transform: skewX(-12deg) translateX(-100%);
+  }
+  
+  .btn-luxury:hover::before {
+    @apply opacity-20;
+    transform: skewX(-12deg) translateX(100%);
+  }
+  
+  /* Secondary button style */
+  .btn-luxury-secondary {
+    @apply relative overflow-hidden;
+    @apply bg-transparent border-2 border-accent text-accent;
+    @apply font-semibold tracking-wide;
+    @apply px-8 py-4 rounded-none;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-2xl;
+    @apply hover:bg-accent hover:text-black;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+  
+  .btn-luxury-secondary::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    @apply opacity-0 transition-opacity duration-300;
+    transform: skewX(-12deg) translateX(-100%);
+  }
+  
+  .btn-luxury-secondary:hover::before {
+    @apply opacity-30;
+    transform: skewX(-12deg) translateX(100%);
+  }
+  
+  /* Premium form inputs */
+  .input-luxury {
+    @apply bg-card border border-border;
+    @apply text-foreground placeholder-muted-foreground;
+    @apply px-4 py-3 rounded-none;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent;
+    @apply transition-all duration-200;
+    @apply backdrop-blur-sm;
+  }
+  
+  .input-luxury:focus {
+    @apply bg-background shadow-lg;
+  }
+  
+  /* Cosmic symbol animation */
+  .cosmic-symbol {
+    @apply relative;
+  }
+  
+  .cosmic-symbol::before {
+    content: '◊';
+    @apply absolute -top-1 -right-1 text-accent;
+    @apply animate-pulse;
+    font-size: 0.6em;
+  }
+  
+  /* Inkblot glow effect */
+  .inkblot-glow {
+    @apply relative;
+  }
+  
+  .inkblot-glow::before {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.2), transparent, rgba(212, 175, 55, 0.2));
+    filter: blur(24px);
+    transform: scale(1.1);
+    @apply animate-pulse;
+  }
+  
+  /* Navigation hover effects */
+  .nav-link {
+    @apply relative text-foreground transition-colors duration-200;
+    @apply hover:text-accent;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent;
+    @apply transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Character counter styling */
+  .char-counter {
+    @apply text-xs text-muted-foreground;
+    @apply transition-colors duration-200;
+  }
+  
+  .char-counter.warning {
+    @apply text-yellow-400;
+  }
+  
+  .char-counter.danger {
+    @apply text-red-400;
   }
 }
 
@@ -43,5 +176,27 @@
   }
   .border-border {
     border-color: var(--border);
+  }
+  .text-success {
+    color: var(--success);
+  }
+  
+  /* Custom animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+    to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
   }
 }
