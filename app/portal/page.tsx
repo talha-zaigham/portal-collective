@@ -57,24 +57,24 @@ export default function PortalPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="border-b border-border/20 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-6">
+        <div className="container py-4 sm:py-6">
           <div className="flex items-center justify-between">
             <Link href="/" className="cosmic-symbol">
-              <h1 className="text-2xl font-bold text-foreground hover:text-accent transition-colors duration-300">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground hover:text-accent transition-colors duration-300">
                 PORTAL
               </h1>
             </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/portal" className="nav-link text-sm font-medium tracking-wide uppercase">
+            <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+              <Link href="/portal" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
                 Portal
               </Link>
-              <Link href="/gallery" className="nav-link text-sm font-medium tracking-wide uppercase">
+              <Link href="/gallery" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
                 Gallery
               </Link>
-              <Link href="/about" className="nav-link text-sm font-medium tracking-wide uppercase">
+              <Link href="/about" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
                 About
               </Link>
-              <Link href="/collect" className="nav-link text-sm font-medium tracking-wide uppercase">
+              <Link href="/collect" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
                 Collect
               </Link>
             </nav>
@@ -82,26 +82,26 @@ export default function PortalPage() {
         </div>
       </header>
 
-      <main className="py-20">
-        <div className="container mx-auto px-6">
+      <main className="section-padding">
+        <div className="container">
           <div className="max-w-4xl mx-auto">
             {/* Section Header */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="heading-lg font-bold mb-4 sm:mb-6">
                 <span className="text-foreground">Share Your</span>
                 <br />
                 <span className="text-accent">Perception</span>
               </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="body-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
                 Describe what you see in this inkblot. Your words will become part of our collective art.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="grid-responsive-2 gap-8 lg:gap-12 xl:gap-16 items-start">
               {/* Inkblot Display */}
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
                 <div className="inkblot-glow">
-                  <div className="w-full max-w-md mx-auto aspect-square rounded-full bg-gradient-to-br from-card via-muted to-card flex items-center justify-center shadow-2xl">
+                  <div className="w-full max-w-sm sm:max-w-md mx-auto aspect-square rounded-full bg-gradient-to-br from-card via-muted to-card flex items-center justify-center shadow-2xl">
                     <div className="w-4/5 h-4/5 bg-gradient-to-br from-muted/50 to-background rounded-full opacity-90 flex items-center justify-center relative overflow-hidden">
                       {/* Animated inkblot pattern */}
                       <div className="absolute inset-4 rounded-full bg-gradient-to-br from-accent/20 to-transparent animate-pulse" />
@@ -110,27 +110,27 @@ export default function PortalPage() {
                       
                       {/* Center content */}
                       <div className="relative z-10 text-center">
-                        <div className="w-12 h-12 mx-auto mb-3 bg-accent/20 rounded-full flex items-center justify-center">
-                          <span className="text-xl text-accent">◊</span>
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-accent/20 rounded-full flex items-center justify-center">
+                          <span className="text-lg sm:text-xl text-accent">◊</span>
                         </div>
-                        <p className="text-muted-foreground text-sm font-medium tracking-wide">INKBLOT A</p>
+                        <p className="text-muted-foreground text-xs sm:text-sm font-medium tracking-wide">INKBLOT A</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground">
+                  <p className="body-sm text-muted-foreground">
                     Take your time. There are no wrong answers.
                   </p>
                 </div>
               </div>
 
               {/* Submission Form */}
-              <div className="space-y-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
+                <form onSubmit={handleSubmit} className="form-mobile">
                   {/* Response Textarea */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <label htmlFor="userResponse" className="block text-sm font-medium text-foreground">
                       What do you see? *
                     </label>
@@ -143,11 +143,11 @@ export default function PortalPage() {
                           setCharCount(e.target.value.length)
                         }}
                         placeholder="Describe the shapes, patterns, or images that come to mind..."
-                        className="input-luxury w-full h-32 resize-none"
+                        className="input-luxury textarea-mobile"
                         maxLength={maxChars}
                         required
                       />
-                      <div className="absolute bottom-3 right-3">
+                      <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3">
                         <span className={`text-xs ${getCharCounterClass()}`}>
                           {charCount}/{maxChars}
                         </span>
@@ -156,7 +156,7 @@ export default function PortalPage() {
                   </div>
 
                   {/* Username */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <label htmlFor="username" className="block text-sm font-medium text-foreground">
                       Username
                     </label>
@@ -166,12 +166,12 @@ export default function PortalPage() {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       placeholder="How should we credit you?"
-                      className="input-luxury w-full"
+                      className="input-luxury input-mobile"
                     />
                   </div>
 
                   {/* Email */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <label htmlFor="email" className="block text-sm font-medium text-foreground">
                       Email
                     </label>
@@ -181,12 +181,12 @@ export default function PortalPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="your@email.com"
-                      className="input-luxury w-full"
+                      className="input-luxury input-mobile"
                     />
                   </div>
 
                   {/* Display Preference */}
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <label className="block text-sm font-medium text-foreground">
                       Display Preference
                     </label>
@@ -200,7 +200,7 @@ export default function PortalPage() {
                           onChange={(e) => setDisplayPref(e.target.value)}
                           className="w-4 h-4 text-accent bg-card border-border focus:ring-accent"
                         />
-                        <span className="text-sm text-muted-foreground">Show anonymously</span>
+                        <span className="body-sm text-muted-foreground">Show anonymously</span>
                       </label>
                       <label className="flex items-center space-x-3 cursor-pointer">
                         <input
@@ -211,21 +211,21 @@ export default function PortalPage() {
                           onChange={(e) => setDisplayPref(e.target.value)}
                           className="w-4 h-4 text-accent bg-card border-border focus:ring-accent"
                         />
-                        <span className="text-sm text-muted-foreground">Show my username</span>
+                        <span className="body-sm text-muted-foreground">Show my username</span>
                       </label>
                     </div>
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-6">
+                  <div className="pt-4 sm:pt-6">
                     <button
                       type="submit"
                       disabled={isSubmitting || !response.trim()}
-                      className="btn-luxury w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                      className="btn-luxury btn-mobile-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center justify-center space-x-3">
-                          <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                           <span>Submitting...</span>
                         </div>
                       ) : (
@@ -236,12 +236,12 @@ export default function PortalPage() {
                 </form>
 
                 {message && (
-                  <div className={`text-center p-4 rounded-lg ${
+                  <div className={`text-center p-3 sm:p-4 rounded-lg ${
                     message.includes('Thank you') 
                       ? 'bg-green-900/20 text-green-400 border border-green-800' 
                       : 'bg-red-900/20 text-red-400 border border-red-800'
                   }`}>
-                    {message}
+                    <p className="body-sm">{message}</p>
                   </div>
                 )}
               </div>
