@@ -181,6 +181,116 @@
     color: var(--success);
   }
   
+  /* Mobile-first responsive utilities */
+  .container {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 100%;
+  }
+  
+  .container-sm {
+    @apply max-w-2xl mx-auto px-4 sm:px-6;
+  }
+  
+  .container-md {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-lg {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-xl {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Mobile-optimized spacing */
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+  
+  .section-padding-sm {
+    @apply py-8 sm:py-12 md:py-16;
+  }
+  
+  /* Mobile-friendly text sizes */
+  .heading-xl {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+  
+  .heading-lg {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  .heading-md {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+  
+  .heading-sm {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+  
+  .body-lg {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+  
+  .body-md {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+  
+  .body-sm {
+    @apply text-xs sm:text-sm md:text-base;
+  }
+  
+  /* Mobile-optimized grid layouts */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12;
+  }
+  
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  /* Mobile-friendly button sizes */
+  .btn-mobile {
+    @apply w-full sm:w-auto px-6 py-3 text-sm sm:text-base;
+  }
+  
+  .btn-mobile-lg {
+    @apply w-full sm:w-auto px-8 py-4 text-base sm:text-lg;
+  }
+  
+  /* Mobile-optimized form elements */
+  .form-mobile {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .input-mobile {
+    @apply w-full px-4 py-3 text-sm sm:text-base;
+  }
+  
+  .textarea-mobile {
+    @apply w-full h-24 sm:h-32 px-4 py-3 text-sm sm:text-base resize-none;
+  }
+  
+  /* Mobile navigation improvements */
+  .nav-mobile {
+    @apply flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6;
+  }
+  
+  /* Mobile-optimized cards */
+  .card-mobile {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+  
+  /* Mobile-friendly aspect ratios */
+  .aspect-mobile {
+    @apply aspect-square sm:aspect-video lg:aspect-square;
+  }
+  
   /* Custom animations */
   .animate-float {
     animation: float 6s ease-in-out infinite;
@@ -198,5 +308,14 @@
   @keyframes glow {
     from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
     to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+  }
+  
+  /* Mobile-specific animations */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-glow,
+    .animate-pulse {
+      animation: none;
+    }
   }
 }
