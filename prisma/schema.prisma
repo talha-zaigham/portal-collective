@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Submission {
+  id           String   @id @default(cuid())
+  createdAt    DateTime @default(now())
+  inkblotId    String   // A, B, C, etc.
+  userResponse String   @db.VarChar(300)
+  username     String?
+  email        String?
+  displayPref  String   // "username" or "anonymous"
+  consentGiven Boolean  @default(false)
+  status       String   @default("pending")
+
+  @@map("submissions")
+}
