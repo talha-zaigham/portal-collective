@@ -9,6 +9,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
       
+<<<<<<< Updated upstream
       {/* Floating particles effect */}
       <div className="absolute inset-0 overflow-hidden">
         {[
@@ -32,6 +33,21 @@ export default function HeroSection() {
           { left: 65, top: 40, delay: 1.7, duration: 5.4 },
           { left: 95, top: 80, delay: 2.9, duration: 6.6 },
           { left: 12, top: 95, delay: 3.8, duration: 5.3 }
+=======
+      {/* Optimized Cosmic Particles - Reduced for Performance */}
+      <div className="absolute inset-0 overflow-hidden z-20">
+        {[
+          { left: 15, top: 25, delay: 0, duration: 8, opacity: 0.4 },
+          { left: 35, top: 75, delay: 2, duration: 6, opacity: 0.6 },
+          { left: 55, top: 15, delay: 4, duration: 7, opacity: 0.3 },
+          { left: 75, top: 65, delay: 1, duration: 9, opacity: 0.5 },
+          { left: 25, top: 45, delay: 3, duration: 6.5, opacity: 0.4 },
+          { left: 65, top: 85, delay: 0.5, duration: 8.5, opacity: 0.7 },
+          { left: 85, top: 35, delay: 2.5, duration: 7.5, opacity: 0.3 },
+          { left: 45, top: 55, delay: 1.5, duration: 6.8, opacity: 0.6 },
+          { left: 5, top: 85, delay: 3.5, duration: 8.2, opacity: 0.4 },
+          { left: 95, top: 15, delay: 0.8, duration: 7.8, opacity: 0.5 }
+>>>>>>> Stashed changes
         ].map((particle, i) => (
           <div
             key={i}

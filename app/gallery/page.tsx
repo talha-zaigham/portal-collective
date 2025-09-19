@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import CosmicBackground from '@/components/CosmicBackground'
 
 // Mock data for completed artworks
 const artworks = [
@@ -9,7 +10,7 @@ const artworks = [
     id: 1,
     title: "Cosmic Collision I",
     description: "Inspired by response: 'I see two galaxies merging in a cosmic dance'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-a.svg",
     price: "$2,500",
     status: "Available",
     inspiredBy: "Anonymous",
@@ -19,7 +20,7 @@ const artworks = [
     id: 2,
     title: "Portal of Perception",
     description: "Inspired by response: 'A gateway to another dimension'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-b.svg",
     price: "$3,200",
     status: "Sold",
     inspiredBy: "Sarah M.",
@@ -29,7 +30,7 @@ const artworks = [
     id: 3,
     title: "Collective Memory",
     description: "Inspired by response: 'The shape of shared dreams'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-c.svg",
     price: "$1,800",
     status: "Available",
     inspiredBy: "Anonymous",
@@ -39,7 +40,7 @@ const artworks = [
     id: 4,
     title: "Inkblot Symphony",
     description: "Inspired by response: 'Music made visible'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-a.svg",
     price: "$4,500",
     status: "Available",
     inspiredBy: "Marcus L.",
@@ -49,7 +50,7 @@ const artworks = [
     id: 5,
     title: "Universal Language",
     description: "Inspired by response: 'The alphabet of the cosmos'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-b.svg",
     price: "$2,800",
     status: "Reserved",
     inspiredBy: "Anonymous",
@@ -59,7 +60,7 @@ const artworks = [
     id: 6,
     title: "Ethereal Echo",
     description: "Inspired by response: 'A whisper from the void'",
-    image: "/abstract-inkblot-art-luxury-contemporary.jpg",
+    image: "/inkblots/inkblot-c.svg",
     price: "$3,600",
     status: "Available",
     inspiredBy: "Elena K.",
@@ -69,35 +70,8 @@ const artworks = [
 
 export default function GalleryPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border/20 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="cosmic-symbol">
-              <h1 className="text-2xl font-bold text-foreground hover:text-accent transition-colors duration-300">
-                PORTAL
-              </h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link href="/portal" className="nav-link text-sm font-medium tracking-wide uppercase">
-                Portal
-              </Link>
-              <Link href="/gallery" className="nav-link text-sm font-medium tracking-wide uppercase">
-                Gallery
-              </Link>
-              <Link href="/about" className="nav-link text-sm font-medium tracking-wide uppercase">
-                About
-              </Link>
-              <Link href="/collect" className="nav-link text-sm font-medium tracking-wide uppercase">
-                Collect
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      <main className="py-20">
+    <CosmicBackground intensity="medium">
+      <main className="pt-20">
         <div className="container mx-auto px-6">
           {/* Gallery Header */}
           <div className="text-center mb-16">
@@ -191,6 +165,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </main>
-    </div>
+    </CosmicBackground>
   )
 }
