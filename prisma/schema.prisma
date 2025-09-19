@@ -18,6 +18,7 @@ model Submission {
   displayPref  String   // "username" or "anonymous"
   consentGiven Boolean  @default(false)
   status       String   @default("pending")
+  votes        Int      @default(0)
 
   @@map("submissions")
 }

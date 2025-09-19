@@ -1,121 +1,166 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import PortalHandsEffect from './PortalHandsEffect'
 
 export default function HeroSection() {
+  const [currentPhrase, setCurrentPhrase] = useState(0)
+  const [isVisible, setIsVisible] = useState(true)
+
+  const cosmicPhrases = [
+    "Where consciousness meets canvas",
+    "The universe speaks through ink",
+    "Collective dreams become art",
+    "Anonymous voices create cosmic visions",
+    "Art emerges from the void",
+    "Perception shapes reality"
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsVisible(false)
+      setTimeout(() => {
+        setCurrentPhrase((prev) => (prev + 1) % cosmicPhrases.length)
+        setIsVisible(true)
+      }, 500)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
+      {/* Portal Hands Effect - Main Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <PortalHandsEffect 
+          title="PORTAL"
+          subtitle="Collective Ink"
+          className="w-full h-full"
+        />
+      </div>
       
-<<<<<<< Updated upstream
-      {/* Floating particles effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[
-          { left: 10, top: 20, delay: 0, duration: 6 },
-          { left: 25, top: 80, delay: 1, duration: 5 },
-          { left: 40, top: 15, delay: 2, duration: 7 },
-          { left: 60, top: 70, delay: 0.5, duration: 6.5 },
-          { left: 80, top: 30, delay: 3, duration: 5.5 },
-          { left: 15, top: 60, delay: 1.5, duration: 6.8 },
-          { left: 35, top: 45, delay: 2.5, duration: 5.2 },
-          { left: 55, top: 85, delay: 0.8, duration: 7.2 },
-          { left: 75, top: 10, delay: 3.5, duration: 6.3 },
-          { left: 90, top: 55, delay: 1.2, duration: 5.8 },
-          { left: 5, top: 75, delay: 2.8, duration: 6.1 },
-          { left: 30, top: 35, delay: 0.3, duration: 7.5 },
-          { left: 50, top: 90, delay: 4, duration: 5.7 },
-          { left: 70, top: 25, delay: 1.8, duration: 6.4 },
-          { left: 85, top: 65, delay: 2.2, duration: 5.9 },
-          { left: 20, top: 50, delay: 3.2, duration: 6.7 },
-          { left: 45, top: 5, delay: 0.7, duration: 7.1 },
-          { left: 65, top: 40, delay: 1.7, duration: 5.4 },
-          { left: 95, top: 80, delay: 2.9, duration: 6.6 },
-          { left: 12, top: 95, delay: 3.8, duration: 5.3 }
-=======
-      {/* Optimized Cosmic Particles - Reduced for Performance */}
+      {/* Cosmic Consciousness Particles */}
       <div className="absolute inset-0 overflow-hidden z-20">
         {[
-          { left: 15, top: 25, delay: 0, duration: 8, opacity: 0.4 },
-          { left: 35, top: 75, delay: 2, duration: 6, opacity: 0.6 },
-          { left: 55, top: 15, delay: 4, duration: 7, opacity: 0.3 },
-          { left: 75, top: 65, delay: 1, duration: 9, opacity: 0.5 },
-          { left: 25, top: 45, delay: 3, duration: 6.5, opacity: 0.4 },
-          { left: 65, top: 85, delay: 0.5, duration: 8.5, opacity: 0.7 },
-          { left: 85, top: 35, delay: 2.5, duration: 7.5, opacity: 0.3 },
-          { left: 45, top: 55, delay: 1.5, duration: 6.8, opacity: 0.6 },
-          { left: 5, top: 85, delay: 3.5, duration: 8.2, opacity: 0.4 },
-          { left: 95, top: 15, delay: 0.8, duration: 7.8, opacity: 0.5 }
->>>>>>> Stashed changes
+          { left: 10, top: 20, delay: 0, duration: 6, opacity: 0.3 },
+          { left: 25, top: 80, delay: 1, duration: 5, opacity: 0.5 },
+          { left: 40, top: 15, delay: 2, duration: 7, opacity: 0.4 },
+          { left: 60, top: 70, delay: 0.5, duration: 6.5, opacity: 0.6 },
+          { left: 80, top: 30, delay: 3, duration: 5.5, opacity: 0.3 },
+          { left: 15, top: 60, delay: 1.5, duration: 6.8, opacity: 0.7 },
+          { left: 35, top: 45, delay: 2.5, duration: 5.2, opacity: 0.4 },
+          { left: 55, top: 85, delay: 0.8, duration: 7.2, opacity: 0.5 },
+          { left: 75, top: 10, delay: 3.5, duration: 6.3, opacity: 0.6 },
+          { left: 90, top: 55, delay: 1.2, duration: 5.8, opacity: 0.3 },
+          { left: 5, top: 75, delay: 2.8, duration: 6.1, opacity: 0.8 },
+          { left: 30, top: 35, delay: 0.3, duration: 7.5, opacity: 0.4 },
+          { left: 50, top: 90, delay: 4, duration: 5.7, opacity: 0.5 },
+          { left: 70, top: 25, delay: 1.8, duration: 6.4, opacity: 0.6 },
+          { left: 85, top: 65, delay: 2.2, duration: 5.9, opacity: 0.3 },
+          { left: 20, top: 50, delay: 3.2, duration: 6.7, opacity: 0.7 },
+          { left: 45, top: 5, delay: 0.7, duration: 7.1, opacity: 0.4 },
+          { left: 65, top: 40, delay: 1.7, duration: 5.4, opacity: 0.5 },
+          { left: 95, top: 80, delay: 2.9, duration: 6.6, opacity: 0.6 },
+          { left: 12, top: 95, delay: 3.8, duration: 5.3, opacity: 0.3 },
+          { left: 38, top: 12, delay: 1.1, duration: 6.9, opacity: 0.8 },
+          { left: 58, top: 88, delay: 2.3, duration: 5.6, opacity: 0.4 },
+          { left: 78, top: 42, delay: 0.9, duration: 7.3, opacity: 0.5 },
+          { left: 8, top: 68, delay: 3.1, duration: 6.2, opacity: 0.6 },
+          { left: 28, top: 38, delay: 1.6, duration: 5.8, opacity: 0.3 },
+          { left: 48, top: 72, delay: 2.7, duration: 6.5, opacity: 0.7 },
+          { left: 68, top: 18, delay: 0.4, duration: 7.4, opacity: 0.4 },
+          { left: 88, top: 52, delay: 3.6, duration: 5.9, opacity: 0.5 },
+          { left: 18, top: 82, delay: 1.9, duration: 6.7, opacity: 0.6 },
+          { left: 42, top: 28, delay: 2.4, duration: 5.3, opacity: 0.3 },
+          { left: 62, top: 58, delay: 0.6, duration: 7.6, opacity: 0.8 },
+          { left: 82, top: 8, delay: 3.3, duration: 6.1, opacity: 0.4 },
+          { left: 2, top: 48, delay: 1.4, duration: 5.7, opacity: 0.5 },
+          { left: 22, top: 78, delay: 2.6, duration: 6.8, opacity: 0.6 },
+          { left: 52, top: 22, delay: 0.8, duration: 7.2, opacity: 0.3 },
+          { left: 72, top: 62, delay: 3.4, duration: 5.4, opacity: 0.7 },
+          { left: 92, top: 38, delay: 1.3, duration: 6.3, opacity: 0.4 },
+          { left: 32, top: 92, delay: 2.1, duration: 5.9, opacity: 0.5 },
+          { left: 52, top: 48, delay: 0.5, duration: 7.7, opacity: 0.6 },
+          { left: 72, top: 12, delay: 3.7, duration: 6.4, opacity: 0.3 },
+          { left: 92, top: 68, delay: 1.8, duration: 5.5, opacity: 0.8 },
+          { left: 12, top: 32, delay: 2.5, duration: 6.9, opacity: 0.4 },
+          { left: 32, top: 72, delay: 0.7, duration: 7.1, opacity: 0.5 },
+          { left: 52, top: 8, delay: 3.9, duration: 6.6, opacity: 0.6 },
+          { left: 72, top: 48, delay: 1.2, duration: 5.8, opacity: 0.3 },
+          { left: 92, top: 88, delay: 2.8, duration: 6.2, opacity: 0.7 },
+          { left: 8, top: 18, delay: 0.9, duration: 7.5, opacity: 0.4 },
+          { left: 28, top: 58, delay: 3.5, duration: 6.7, opacity: 0.5 },
+          { left: 48, top: 98, delay: 1.7, duration: 5.6, opacity: 0.6 },
+          { left: 68, top: 28, delay: 2.3, duration: 6.8, opacity: 0.3 },
+          { left: 88, top: 68, delay: 0.6, duration: 7.3, opacity: 0.8 }
         ].map((particle, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-accent/30 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-white/30 rounded-full animate-float"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
               animationDelay: `${particle.delay}s`,
-              animationDuration: `${particle.duration}s`
+              animationDuration: `${particle.duration}s`,
+              opacity: particle.opacity
             }}
           />
         ))}
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto text-center space-y-16">
-          {/* Main Inkblot Display */}
-          <div className="relative">
-            <div className="inkblot-glow">
-              <div className="w-96 h-96 mx-auto rounded-full bg-gradient-to-br from-card via-muted to-card flex items-center justify-center shadow-2xl animate-glow">
-                {/* Placeholder for actual inkblot image */}
-                <div className="w-80 h-80 bg-gradient-to-br from-muted/50 to-background rounded-full opacity-90 flex items-center justify-center relative overflow-hidden">
-                  {/* Animated inkblot pattern */}
-                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-accent/20 to-transparent animate-pulse" />
-                  <div className="absolute inset-8 rounded-full bg-gradient-to-tl from-transparent to-accent/10 animate-pulse" style={{ animationDelay: '1s' }} />
-                  <div className="absolute inset-12 rounded-full bg-gradient-to-br from-transparent to-accent/5 animate-pulse" style={{ animationDelay: '2s' }} />
-                  
-                  {/* Center content */}
-                  <div className="relative z-10 text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-accent/20 rounded-full flex items-center justify-center">
-                      <span className="text-2xl text-accent">◊</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm font-medium tracking-wide">INKBLOT A</p>
-                  </div>
-                </div>
+      {/* Cosmic Consciousness Text */}
+      <div className="absolute inset-0 flex items-center justify-center z-30">
+        <div className="text-center space-y-8">
+          <div className="space-y-4">
+            <h1 
+              className={`text-6xl md:text-8xl font-bold tracking-tight leading-none transition-all duration-1000 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+              style={{
+                color: '#ffffff',
+                textShadow: '0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(255,255,255,0.1)',
+                filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3))',
+                fontWeight: '100',
+                letterSpacing: '0.05em'
+              }}
+            >
+              {cosmicPhrases[currentPhrase]}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Portal */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+        <div className="flex flex-col items-center space-y-6">
+          {/* Cosmic Navigation */}
+          <div className="flex space-x-8">
+            <Link href="/portal" className="cosmic-nav-link group">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
+                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">◊</span>
               </div>
-            </div>
+              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">Portal</span>
+            </Link>
+            
+            <Link href="/gallery" className="cosmic-nav-link group">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
+                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">✦</span>
+              </div>
+              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">Gallery</span>
+            </Link>
+            
+            <Link href="/about" className="cosmic-nav-link group">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
+                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">◈</span>
+              </div>
+              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">About</span>
+            </Link>
           </div>
-
-          {/* Headlines */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-none">
-                <span className="text-foreground">PORTAL</span>
-                <br />
-                <span className="text-accent">Collective Ink</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide max-w-3xl mx-auto leading-relaxed">
-                Where your perceptions become collectible art
-              </p>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-8">
-              <Link href="/portal">
-                <button className="btn-luxury text-lg px-12 py-5 tracking-wider">
-                  Enter Portal
-                </button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Subtle scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2 animate-pulse" />
-            </div>
+          
+          {/* Scroll Indicator */}
+          <div className="w-8 h-12 border border-white/30 rounded-full flex justify-center animate-bounce">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
           </div>
         </div>
       </div>

@@ -70,24 +70,24 @@ const artworks = [
 
 export default function GalleryPage() {
   return (
-    <CosmicBackground intensity="medium">
-      <main className="pt-20">
-        <div className="container mx-auto px-6">
+    <CosmicBackground intensity="medium" className="pt-20">
+      <main className="section-padding">
+        <div className="container">
           {/* Gallery Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="heading-lg font-bold mb-4 sm:mb-6">
               <span className="text-foreground">Collective</span>
               <br />
               <span className="text-accent">Artworks</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="body-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Each piece is born from your perceptions, transformed through cosmic interpretation, 
               and brought to life as collectible art. These are the tangible results of our collective consciousness.
             </p>
           </div>
 
           {/* Artworks Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid-responsive gap-6 sm:gap-8 mb-12 sm:mb-16">
             {artworks.map((artwork) => (
               <div key={artwork.id} className="group bg-card border border-border rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300">
                 {/* Artwork Image */}
@@ -99,8 +99,8 @@ export default function GalleryPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 text-xs font-medium rounded-full ${
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+                    <span className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-full ${
                       artwork.status === 'Available' 
                         ? 'bg-green-900/80 text-green-400 border border-green-800'
                         : artwork.status === 'Sold'
@@ -113,20 +113,20 @@ export default function GalleryPage() {
                 </div>
 
                 {/* Artwork Info */}
-                <div className="p-6 space-y-4">
+                <div className="card-mobile space-y-3 sm:space-y-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                    <h3 className="heading-sm font-semibold text-foreground mb-2">
                       {artwork.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="body-sm text-muted-foreground leading-relaxed">
                       {artwork.description}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-border">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-3 sm:pt-4 border-t border-border space-y-3 sm:space-y-0">
                     <div>
-                      <p className="text-2xl font-bold text-accent">{artwork.price}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xl sm:text-2xl font-bold text-accent">{artwork.price}</p>
+                      <p className="body-sm text-muted-foreground">
                         Inspired by {artwork.inspiredBy} • {artwork.year}
                       </p>
                     </div>
@@ -134,7 +134,7 @@ export default function GalleryPage() {
                     {artwork.status === 'Available' && (
                       <Link 
                         href="/collect" 
-                        className="btn-luxury text-sm px-6 py-2"
+                        className="btn-luxury btn-mobile text-sm"
                       >
                         Inquire
                       </Link>
@@ -146,19 +146,19 @@ export default function GalleryPage() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center bg-card border border-border rounded-lg p-12">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
+          <div className="text-center bg-card border border-border rounded-lg card-mobile">
+            <h3 className="heading-sm font-bold text-foreground mb-3 sm:mb-4">
               Your Perception Could Be Next
             </h3>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="body-md text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
               Join the collective consciousness. Submit your interpretation of our inkblots 
               and see your words transformed into tangible art.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/portal" className="btn-luxury">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Link href="/portal" className="btn-luxury btn-mobile">
                 Enter Portal
               </Link>
-              <Link href="/collect" className="btn-luxury-secondary">
+              <Link href="/collect" className="btn-luxury-secondary btn-mobile">
                 Contact Collector
               </Link>
             </div>
