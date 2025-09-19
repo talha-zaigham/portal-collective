@@ -159,6 +159,88 @@
   .char-counter.danger {
     @apply text-red-400;
   }
+  
+  /* Portal Hands Effect - No text animations, hands move naturally */
+  
+  .portal-hands-overlay {
+    animation: portal-shimmer 4s ease-in-out infinite;
+  }
+  
+  @keyframes portal-shimmer {
+    0%, 100% {
+      opacity: 0.1;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 0.3;
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Cosmic Navigation */
+  .cosmic-nav-link {
+    @apply flex flex-col items-center space-y-2 transition-all duration-500;
+  }
+  
+  .cosmic-nav-link:hover {
+    @apply transform scale-105;
+  }
+  
+  /* Cosmic Consciousness Effects */
+  .cosmic-glow {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
+  }
+  
+  .cosmic-pulse {
+    animation: cosmic-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes cosmic-pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Floating Animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-5px) rotate(-1deg);
+    }
+  }
+  
+  /* Cosmic Text Effects */
+  .cosmic-text {
+    background: linear-gradient(45deg, #ffffff, #d4af37, #ffffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: cosmic-shift 4s ease-in-out infinite;
+  }
+  
+  @keyframes cosmic-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
 
 @layer utilities {

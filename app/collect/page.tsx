@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { trackCollectorInquiry } from '@/lib/analytics'
+import CosmicBackground from '@/components/CosmicBackground'
 
 export default function CollectPage() {
   const [formData, setFormData] = useState({
@@ -20,18 +22,34 @@ export default function CollectPage() {
     setIsSubmitting(true)
 
     try {
-      // Simulate API call - you can replace this with actual email service
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      setMessage('Thank you for your interest! We will contact you within 24 hours to discuss your collection needs.')
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        interest: '',
-        budget: '',
-        message: ''
+      const response = await fetch('/api/collector-inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        // Track collector inquiry analytics
+        trackCollectorInquiry(formData.budget)
+        
+        setMessage(result.message)
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          interest: '',
+          budget: '',
+          message: ''
+        })
+      } else {
+        setMessage(result.error || 'Error submitting inquiry. Please try again or contact us directly.')
+      }
     } catch (error) {
+      console.error('Submission error:', error)
       setMessage('Error submitting inquiry. Please try again or contact us directly.')
     }
 
@@ -39,34 +57,7 @@ export default function CollectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border/20 backdrop-blur-sm">
-        <div className="container py-4 sm:py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="cosmic-symbol">
-              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground hover:text-accent transition-colors duration-300">
-                PORTAL
-              </h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <Link href="/portal" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Portal
-              </Link>
-              <Link href="/gallery" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Gallery
-              </Link>
-              <Link href="/about" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                About
-              </Link>
-              <Link href="/collect" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Collect
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
+    <CosmicBackground intensity="medium" className="pt-20">
       <main className="section-padding">
         <div className="container">
           <div className="max-w-6xl mx-auto">
@@ -323,7 +314,7 @@ export default function CollectPage() {
           </div>
         </div>
       </main>
-    </div>
+    </CosmicBackground>
   )
 }
 

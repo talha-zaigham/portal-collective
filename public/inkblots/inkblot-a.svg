@@ -1,0 +1,41 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="cosmicGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#cosmicGradient)"/>
+  
+  <!-- Central cosmic portal -->
+  <ellipse cx="200" cy="200" rx="80" ry="120" fill="#000000" opacity="0.8"/>
+  
+  <!-- Portal arms extending outward -->
+  <path d="M 120 200 Q 160 180 200 200 Q 240 180 280 200 Q 240 220 200 200 Q 160 220 120 200" 
+        fill="#1a1a1a" opacity="0.6" filter="url(#blur)"/>
+  
+  <!-- Cosmic tendrils -->
+  <path d="M 200 80 Q 180 120 200 160 Q 220 120 200 80" 
+        fill="#2a2a2a" opacity="0.5"/>
+  <path d="M 200 320 Q 180 280 200 240 Q 220 280 200 320" 
+        fill="#2a2a2a" opacity="0.5"/>
+  
+  <!-- Stellar formations -->
+  <circle cx="150" cy="150" r="3" fill="#d4af37" opacity="0.8"/>
+  <circle cx="250" cy="150" r="3" fill="#d4af37" opacity="0.8"/>
+  <circle cx="150" cy="250" r="3" fill="#d4af37" opacity="0.8"/>
+  <circle cx="250" cy="250" r="3" fill="#d4af37" opacity="0.8"/>
+  
+  <!-- Nebula clouds -->
+  <ellipse cx="100" cy="200" rx="25" ry="15" fill="#4a9eff" opacity="0.3" filter="url(#blur)"/>
+  <ellipse cx="300" cy="200" rx="25" ry="15" fill="#4a9eff" opacity="0.3" filter="url(#blur)"/>
+  
+  <!-- Central void -->
+  <ellipse cx="200" cy="200" rx="30" ry="45" fill="#000000" opacity="0.9"/>
+</svg>
