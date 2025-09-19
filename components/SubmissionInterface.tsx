@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackSubmission } from '@/lib/analytics'
 
 interface SubmissionData {
   id: string
@@ -51,6 +52,9 @@ export default function SubmissionInterface({ inkblotId = 'A', onSubmit }: Submi
       }
 
       const result = await response.json()
+      
+      // Track submission analytics
+      trackSubmission(inkblotId, formData.userResponse.length)
       
       if (onSubmit) {
         onSubmit(result)
@@ -103,19 +107,22 @@ export default function SubmissionInterface({ inkblotId = 'A', onSubmit }: Submi
             {/* Inkblot Display */}
             <div className="space-y-6 sm:space-y-8 order-2 lg:order-1">
               <div className="inkblot-glow">
-                <div className="w-full max-w-sm sm:max-w-md mx-auto aspect-square rounded-full bg-gradient-to-br from-card via-muted to-card flex items-center justify-center shadow-2xl">
-                  <div className="w-4/5 h-4/5 bg-gradient-to-br from-muted/50 to-background rounded-full opacity-90 flex items-center justify-center relative overflow-hidden">
-                    {/* Animated inkblot pattern */}
-                    <div className="absolute inset-4 rounded-full bg-gradient-to-br from-accent/20 to-transparent animate-pulse" />
-                    <div className="absolute inset-8 rounded-full bg-gradient-to-tl from-transparent to-accent/10 animate-pulse" style={{ animationDelay: '1s' }} />
-                    <div className="absolute inset-12 rounded-full bg-gradient-to-br from-transparent to-accent/5 animate-pulse" style={{ animationDelay: '2s' }} />
-                    
-                    {/* Center content */}
-                    <div className="relative z-10 text-center">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 bg-accent/20 rounded-full flex items-center justify-center">
-                        <span className="text-lg sm:text-xl text-accent">◊</span>
-                      </div>
-                      <p className="text-muted-foreground text-xs sm:text-sm font-medium tracking-wide">INKBLOT {inkblotId}</p>
+                <div className="w-full max-w-sm sm:max-w-md mx-auto aspect-square rounded-2xl bg-gradient-to-br from-card via-muted to-card flex items-center justify-center shadow-2xl overflow-hidden">
+                  <img
+                    src={`/inkblots/inkblot-${inkblotId.toLowerCase()}.svg`}
+                    alt={`Cosmic Inkblot ${inkblotId}`}
+                    className="w-full h-full object-contain p-4"
+                    style={{
+                      filter: 'contrast(1.1) brightness(0.9)',
+                    }}
+                  />
+                  
+                  {/* Inkblot Label */}
+                  <div className="absolute top-4 left-4">
+                    <div className="bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full border border-accent/30">
+                      <span className="text-accent font-medium text-xs tracking-wide">
+                        INKBLOT {inkblotId}
+                      </span>
                     </div>
                   </div>
                 </div>

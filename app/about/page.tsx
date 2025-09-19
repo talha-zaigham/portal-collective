@@ -1,37 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import CosmicBackground from '@/components/CosmicBackground'
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border/20 backdrop-blur-sm">
-        <div className="container py-4 sm:py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="cosmic-symbol">
-              <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground hover:text-accent transition-colors duration-300">
-                PORTAL
-              </h1>
-            </Link>
-            <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
-              <Link href="/portal" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Portal
-              </Link>
-              <Link href="/gallery" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Gallery
-              </Link>
-              <Link href="/about" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                About
-              </Link>
-              <Link href="/collect" className="nav-link text-xs sm:text-sm font-medium tracking-wide uppercase">
-                Collect
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
+    <CosmicBackground intensity="medium" className="pt-20">
       <main className="section-padding">
         <div className="container">
           <div className="max-w-4xl mx-auto">
@@ -168,6 +142,6 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
-    </div>
+    </CosmicBackground>
   )
 }
