@@ -19,7 +19,7 @@ export default function CollectiveConsciousness() {
     const mockParticipants = Array.from({ length: 8 }, (_, i) => ({
       id: `participant_${i}`,
       symbol: ['◊', '◈', '✦', '◉', '◐', '◑', '◒', '◓'][i],
-      color: ['#d4af37', '#4a9eff', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899'][i],
+      color: ['#d4af37', '#d4af37', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899'][i],
       cosmicName: ['Stellar Wanderer', 'Void Seeker', 'Cosmic Observer', 'Galactic Dreamer', 'Nebula Whisperer', 'Portal Walker', 'Dimension Dancer', 'Universe Listener'][i],
       lastActive: new Date(Date.now() - i * 450000).toISOString() // Deterministic timing
     }))
@@ -27,7 +27,7 @@ export default function CollectiveConsciousness() {
   }, [])
 
   return (
-    <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-6 space-y-6">
+    <div className="glass-luxury rounded-lg p-6 space-y-6">
       {/* Header */}
       <div className="text-center">
         <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -107,8 +107,8 @@ export default function CollectiveConsciousness() {
       </div>
 
       {/* Collective Message */}
-      <div className="text-center p-4 bg-accent/10 border border-accent/20 rounded-lg">
-        <p className="text-sm text-foreground italic">
+      <div className="text-center p-4 bg-accent/10 border border-accent/20 rounded-lg border-cosmic">
+        <p className="text-sm text-foreground italic cosmic-text">
           "In the cosmic void, individual voices merge into collective consciousness, 
           creating art that transcends the boundaries of self."
         </p>

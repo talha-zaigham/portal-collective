@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { moderateSubmission } from '@/lib/content-moderation'
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,15 +11,31 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     if (!userResponse || !consentGiven) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: userResponse and consentGiven are required' },
         { status: 400 }
       )
     }
 
     // Validate response length
-    if (userResponse.length > 300) {
+    if (userResponse.length > 500) {
       return NextResponse.json(
-        { error: 'Response too long (max 300 characters)' },
+        { error: 'Response too long (max 500 characters)' },
+        { status: 400 }
+      )
+    }
+
+    // Content moderation
+    const moderationResult = moderateSubmission(userResponse)
+    if (!moderationResult.isApproved) {
+      // Log rejected content for monitoring
+      console.log(`Content rejected: "${userResponse.substring(0, 50)}..." - Reason: ${moderationResult.reason} - Flags: ${moderationResult.flags.join(', ')}`)
+      
+      return NextResponse.json(
+        { 
+          error: 'Content does not meet quality standards',
+          reason: moderationResult.reason,
+          confidence: moderationResult.confidence
+        },
         { status: 400 }
       )
     }

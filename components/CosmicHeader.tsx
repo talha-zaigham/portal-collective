@@ -45,8 +45,8 @@ export default function CosmicHeader() {
           {/* Logo */}
           <Link href="/" className="group">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
-                <span className="text-xl text-accent group-hover:text-white transition-colors duration-500">◊</span>
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury">
+                <span className="text-xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◊</span>
               </div>
               <h1 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">
                 PORTAL
