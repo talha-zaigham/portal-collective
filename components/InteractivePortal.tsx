@@ -6,6 +6,7 @@ import { trackVote } from '@/lib/analytics'
 import { getAnonymousIdentity } from '@/lib/anonymous-identity'
 import AnonymousAvatar from './AnonymousAvatar'
 import CollectiveConsciousness from './CollectiveConsciousness'
+import ProtectedImage from './ProtectedImage'
 
 interface InkblotData {
   id: string
@@ -208,7 +209,7 @@ export default function InteractivePortal() {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className="relative">
 
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-6xl mx-auto">
@@ -233,26 +234,25 @@ export default function InteractivePortal() {
             {/* Inkblot Display */}
             <div className="space-y-8">
               <div className="relative">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-card to-muted border border-border/50 shadow-2xl">
+                <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-card to-muted border border-border/50 shadow-2xl relative">
                   {inkblots[currentInkblot] && (
-                    <img
+                    <ProtectedImage
                       src={inkblots[currentInkblot].image}
                       alt={`Cosmic Inkblot ${currentInkblot + 1}`}
-                      className="w-full h-full object-contain"
-                      style={{
-                        filter: 'contrast(1.1) brightness(0.9)',
-                      }}
+                      className="w-full h-full"
+                      watermarkText="PORTAL COLLECTIVE INK"
+                      showOverlay={false}
                     />
                   )}
                   
                   {/* Cosmic overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/10 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/10 to-black/20 pointer-events-none" />
                   
-                  {/* Inkblot Label */}
-                  <div className="absolute top-6 left-6">
-                    <div className="bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full border border-accent/30">
-                      <span className="text-accent font-medium text-sm tracking-wide">
-                        {inkblots[currentInkblot]?.id.toUpperCase().replace('-', ' ') || `COSMIC INKBLOT ${currentInkblot + 1}`}
+                  {/* Inkblot Label - Subtle positioning to avoid conflicts */}
+                  <div className="absolute bottom-4 right-4 z-30">
+                    <div className="bg-background/95 backdrop-blur-sm px-3 py-1.5 rounded-full border border-accent/20 shadow-lg">
+                      <span className="text-accent/80 font-medium text-xs tracking-wide">
+                        {inkblots[currentInkblot]?.id.toUpperCase().replace('-', ' ') || `INKBLOT ${currentInkblot + 1}`}
                       </span>
                     </div>
                   </div>

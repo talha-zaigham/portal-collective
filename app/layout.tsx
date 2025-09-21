@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import CosmicHeader from "@/components/CosmicHeader";
+import CosmicFooter from "@/components/CosmicFooter";
+import ConsentNotice from "@/components/ConsentNotice";
+import ImageProtection from "@/components/ImageProtection";
+import DownloadProtection from "@/components/DownloadProtection";
 import Script from "next/script";
 
 const playfairDisplay = Playfair_Display({
@@ -50,10 +54,16 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${inter.variable} antialiased flex flex-col min-h-screen`}
       >
         <CosmicHeader />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
+        <CosmicFooter />
+        <ConsentNotice />
+        <ImageProtection />
+        <DownloadProtection />
       </body>
     </html>
   );
