@@ -145,14 +145,14 @@ export default function HeroSection() {
             
             <Link href="/gallery" className="cosmic-nav-link group luxury-hover">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury shimmer-luxury">
-                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">✦</span>
+                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◊</span>
               </div>
               <span className="text-xs sm:text-sm text-white/70 mt-2 group-hover:text-white transition-colors duration-500 font-medium tracking-wide">Gallery</span>
             </Link>
             
             <Link href="/about" className="cosmic-nav-link group luxury-hover">
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury shimmer-luxury">
-                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◈</span>
+                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◊</span>
               </div>
               <span className="text-xs sm:text-sm text-white/70 mt-2 group-hover:text-white transition-colors duration-500 font-medium tracking-wide">About</span>
             </Link>

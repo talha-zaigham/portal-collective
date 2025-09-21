@@ -41,16 +41,16 @@ export default function CosmicFooter() {
                 <span className="group-hover:animate-luxury-shimmer">◊ Home</span>
               </Link>
               <Link href="/portal" className="text-sm text-muted-foreground hover:text-accent transition-all duration-300 luxury-hover group">
-                <span className="group-hover:animate-luxury-shimmer">◈ Portal</span>
+                <span className="group-hover:animate-luxury-shimmer">◊ Portal</span>
               </Link>
               <Link href="/gallery" className="text-sm text-muted-foreground hover:text-accent transition-all duration-300 luxury-hover group">
-                <span className="group-hover:animate-luxury-shimmer">✦ Gallery</span>
+                <span className="group-hover:animate-luxury-shimmer">◊ Gallery</span>
               </Link>
               <Link href="/about" className="text-sm text-muted-foreground hover:text-accent transition-all duration-300 luxury-hover group">
-                <span className="group-hover:animate-luxury-shimmer">◉ About</span>
+                <span className="group-hover:animate-luxury-shimmer">◊ About</span>
               </Link>
               <Link href="/collect" className="text-sm text-muted-foreground hover:text-accent transition-all duration-300 luxury-hover group">
-                <span className="group-hover:animate-luxury-shimmer">◐ Collect</span>
+                <span className="group-hover:animate-luxury-shimmer">◊ Collect</span>
               </Link>
             </nav>
           </div>

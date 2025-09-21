@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 export default function CosmicHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeLink, setActiveLink] = useState('')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -23,15 +24,15 @@ export default function CosmicHeader() {
 
   const navItems = [
     { href: '/', label: 'Home', symbol: '◊' },
-    { href: '/portal', label: 'Portal', symbol: '◈' },
-    { href: '/gallery', label: 'Gallery', symbol: '✦' },
-    { href: '/about', label: 'About', symbol: '◉' },
-    { href: '/collect', label: 'Collect', symbol: '◐' }
+    { href: '/portal', label: 'Portal', symbol: '◊' },
+    { href: '/gallery', label: 'Gallery', symbol: '◊' },
+    { href: '/about', label: 'About', symbol: '◊' },
+    { href: '/collect', label: 'Collect', symbol: '◊' }
   ]
 
   const legalItems = [
-    { href: '/terms', label: 'Terms', symbol: '⚖' },
-    { href: '/privacy', label: 'Privacy', symbol: '🔒' }
+    { href: '/terms', label: 'Terms', symbol: '◊' },
+    { href: '/privacy', label: 'Privacy', symbol: '◊' }
   ]
 
   return (
@@ -65,10 +66,14 @@ export default function CosmicHeader() {
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <span className="text-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className={`text-sm transition-all duration-300 ${
+                    activeLink === item.href 
+                      ? 'text-accent' 
+                      : 'text-accent group-hover:brightness-125 group-hover:animate-luxury-shimmer'
+                  }`}>
                     {item.symbol}
                   </span>
-                  <span className="text-sm font-medium tracking-wide uppercase">
+                  <span className="text-sm font-medium tracking-wide uppercase font-body">
                     {item.label}
                   </span>
                 </div>
@@ -77,9 +82,6 @@ export default function CosmicHeader() {
                 {activeLink === item.href && (
                   <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-accent rounded-full" />
                 )}
-                
-                {/* Hover effect */}
-                <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-accent/30 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
               </Link>
             ))}
             
@@ -93,11 +95,15 @@ export default function CosmicHeader() {
                     activeLink === item.href ? 'text-accent' : 'text-muted-foreground hover:text-accent'
                   }`}
                 >
-                  <div className="flex items-center space-x-1">
-                    <span className="text-sm group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex items-center space-x-2">
+                    <span className={`text-xs transition-all duration-300 ${
+                      activeLink === item.href 
+                        ? 'text-accent' 
+                        : 'text-accent group-hover:brightness-125 group-hover:animate-luxury-shimmer'
+                    }`}>
                       {item.symbol}
                     </span>
-                    <span className="text-xs font-medium tracking-wide uppercase">
+                    <span className="text-xs font-medium tracking-wide uppercase font-body">
                       {item.label}
                     </span>
                   </div>
@@ -106,18 +112,76 @@ export default function CosmicHeader() {
                   {activeLink === item.href && (
                     <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-accent rounded-full" />
                   )}
-                  
-                  {/* Hover effect */}
-                  <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-accent/30 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </Link>
               ))}
             </div>
           </nav>
 
           {/* Mobile menu button */}
-          <button className="md:hidden w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center">
-            <span className="text-accent">◊</span>
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-accent/60 transition-all duration-300"
+          >
+            <span className="text-accent text-sm">◊</span>
           </button>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+          isMobileMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'
+        }`}>
+          <nav className="flex flex-col space-y-3 pt-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group relative transition-all duration-300 flex items-center space-x-2 py-2 px-3 rounded-lg ${
+                  activeLink === item.href 
+                    ? 'text-accent bg-accent/10' 
+                    : 'text-foreground hover:text-accent hover:bg-card/50'
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className={`text-sm transition-all duration-300 ${
+                  activeLink === item.href 
+                    ? 'text-accent' 
+                    : 'text-accent group-hover:brightness-125 group-hover:animate-luxury-shimmer'
+                }`}>
+                  {item.symbol}
+                </span>
+                <span className="text-sm font-medium tracking-wide uppercase font-body">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+            
+            {/* Mobile Legal Links */}
+            <div className="pt-3 border-t border-border/30">
+              {legalItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`group relative transition-all duration-300 flex items-center space-x-2 py-2 px-3 rounded-lg ${
+                    activeLink === item.href 
+                      ? 'text-accent bg-accent/10' 
+                      : 'text-muted-foreground hover:text-accent hover:bg-card/50'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className={`text-xs transition-all duration-300 ${
+                    activeLink === item.href 
+                      ? 'text-accent' 
+                      : 'text-accent group-hover:brightness-125 group-hover:animate-luxury-shimmer'
+                  }`}>
+                    {item.symbol}
+                  </span>
+                  <span className="text-xs font-medium tracking-wide uppercase font-body">
+                    {item.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </nav>
         </div>
       </div>
     </header>
