@@ -124,14 +124,14 @@ export default function CuratorPage() {
 
           {/* Selection Actions */}
           {selectedSubmissions.length > 0 && (
-            <div className="bg-accent/10 border border-accent/30 rounded-lg p-6 mb-8">
+            <div className="glass-luxury p-6 mb-8">
               <div className="flex items-center justify-between">
                 <p className="text-foreground">
                   {selectedSubmissions.length} submission{selectedSubmissions.length !== 1 ? 's' : ''} selected
                 </p>
                 <button
                   onClick={handleApproveSelected}
-                  className="bg-accent text-black px-6 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors duration-300"
+                  className="btn-luxury"
                 >
                   Approve Selected
                 </button>
@@ -150,10 +150,10 @@ export default function CuratorPage() {
               {filteredSubmissions.map((submission) => (
                 <div
                   key={submission.id}
-                  className={`bg-card border rounded-lg p-6 cursor-pointer transition-all duration-300 hover:border-accent/50 ${
+                  className={`card-luxury p-6 cursor-pointer ${
                     selectedSubmissions.includes(submission.id)
                       ? 'border-accent bg-accent/5'
-                      : 'border-border'
+                      : ''
                   }`}
                   onClick={() => handleSelectSubmission(submission.id)}
                 >
@@ -211,8 +211,8 @@ export default function CuratorPage() {
 
           {filteredSubmissions.length === 0 && !isLoading && (
             <div className="text-center py-12">
-              <div className="w-16 h-16 mx-auto bg-accent/20 rounded-full flex items-center justify-center mb-4">
-                <span className="text-2xl text-accent">◊</span>
+              <div className="w-16 h-16 mx-auto glass-luxury rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl text-accent cosmic-pulse glow-luxury">◊</span>
               </div>
               <p className="text-muted-foreground">No submissions found for the selected filter.</p>
             </div>

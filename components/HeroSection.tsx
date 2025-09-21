@@ -131,37 +131,42 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Navigation Portal */}
+      {/* Enhanced Navigation Portal */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40">
-        <div className="flex flex-col items-center space-y-6">
-          {/* Cosmic Navigation */}
-          <div className="flex space-x-8">
-            <Link href="/portal" className="cosmic-nav-link group">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
-                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">◊</span>
+        <div className="flex flex-col items-center space-y-8">
+          {/* Enhanced Cosmic Navigation */}
+          <div className="flex space-x-8 sm:space-x-12">
+            <Link href="/portal" className="cosmic-nav-link group luxury-hover">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury shimmer-luxury">
+                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◊</span>
               </div>
-              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">Portal</span>
+              <span className="text-xs sm:text-sm text-white/70 mt-2 group-hover:text-white transition-colors duration-500 font-medium tracking-wide">Portal</span>
             </Link>
             
-            <Link href="/gallery" className="cosmic-nav-link group">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
-                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">✦</span>
+            <Link href="/gallery" className="cosmic-nav-link group luxury-hover">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury shimmer-luxury">
+                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">✦</span>
               </div>
-              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">Gallery</span>
+              <span className="text-xs sm:text-sm text-white/70 mt-2 group-hover:text-white transition-colors duration-500 font-medium tracking-wide">Gallery</span>
             </Link>
             
-            <Link href="/about" className="cosmic-nav-link group">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110">
-                <span className="text-2xl text-accent group-hover:text-white transition-colors duration-500">◈</span>
+            <Link href="/about" className="cosmic-nav-link group luxury-hover">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-accent/40 flex items-center justify-center border border-accent/30 group-hover:border-accent/60 transition-all duration-500 group-hover:scale-110 glow-luxury shimmer-luxury">
+                <span className="text-2xl sm:text-3xl text-accent group-hover:text-white transition-colors duration-500 cosmic-pulse">◈</span>
               </div>
-              <span className="text-xs text-white/70 mt-2 group-hover:text-white transition-colors duration-500">About</span>
+              <span className="text-xs sm:text-sm text-white/70 mt-2 group-hover:text-white transition-colors duration-500 font-medium tracking-wide">About</span>
             </Link>
           </div>
           
-          {/* Scroll Indicator */}
-          <div className="w-8 h-12 border border-white/30 rounded-full flex justify-center animate-bounce">
+          {/* Enhanced Scroll Indicator */}
+          <div className="w-8 h-12 border border-white/30 rounded-full flex justify-center animate-bounce luxury-hover">
             <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
           </div>
+          
+          {/* Call to Action Button */}
+          <Link href="/portal" className="btn-luxury btn-luxury-responsive-lg mt-4">
+            Enter the Portal
+          </Link>
         </div>
       </div>
     </section>

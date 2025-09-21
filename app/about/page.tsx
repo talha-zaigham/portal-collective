@@ -47,7 +47,7 @@ export default function AboutPage() {
               {/* The Artist */}
               <section>
                 <h3 className="heading-md font-bold text-foreground mb-6 sm:mb-8">The Artist</h3>
-                <div className="bg-card border border-border rounded-lg card-mobile">
+                <div className="card-luxury card-mobile">
                   <div className="grid-responsive-2 gap-6 sm:gap-8 items-center">
                     <div className="order-2 md:order-1">
                       <h4 className="heading-sm font-semibold text-accent mb-3 sm:mb-4">Cosmic Origins</h4>
@@ -62,8 +62,8 @@ export default function AboutPage() {
                       </p>
                     </div>
                     <div className="text-center order-1 md:order-2">
-                      <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto bg-gradient-to-br from-accent/20 to-transparent rounded-full flex items-center justify-center">
-                        <span className="text-4xl sm:text-5xl md:text-6xl text-accent">◊</span>
+                      <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 mx-auto bg-accent rounded-full flex items-center justify-center glow-luxury">
+                        <span className="text-4xl sm:text-5xl md:text-6xl text-black cosmic-pulse">◊</span>
                       </div>
                     </div>
                   </div>
@@ -75,8 +75,8 @@ export default function AboutPage() {
                 <h3 className="heading-md font-bold text-foreground mb-6 sm:mb-8">The Process</h3>
                 <div className="grid-responsive gap-6 sm:gap-8">
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent/20 rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                      <span className="text-lg sm:text-xl md:text-2xl text-accent">1</span>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent rounded-full flex items-center justify-center mb-4 sm:mb-6 glow-luxury">
+                      <span className="text-lg sm:text-xl md:text-2xl text-black font-bold">1</span>
                     </div>
                     <h4 className="heading-sm font-semibold text-foreground mb-3 sm:mb-4">Perceive</h4>
                     <p className="body-md text-muted-foreground">
@@ -85,8 +85,8 @@ export default function AboutPage() {
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent/20 rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                      <span className="text-lg sm:text-xl md:text-2xl text-accent">2</span>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent rounded-full flex items-center justify-center mb-4 sm:mb-6 glow-luxury">
+                      <span className="text-lg sm:text-xl md:text-2xl text-black font-bold">2</span>
                     </div>
                     <h4 className="heading-sm font-semibold text-foreground mb-3 sm:mb-4">Transform</h4>
                     <p className="body-md text-muted-foreground">
@@ -95,8 +95,8 @@ export default function AboutPage() {
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent/20 rounded-full flex items-center justify-center mb-4 sm:mb-6">
-                      <span className="text-lg sm:text-xl md:text-2xl text-accent">3</span>
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto bg-accent rounded-full flex items-center justify-center mb-4 sm:mb-6 glow-luxury">
+                      <span className="text-lg sm:text-xl md:text-2xl text-black font-bold">3</span>
                     </div>
                     <h4 className="heading-sm font-semibold text-foreground mb-3 sm:mb-4">Collect</h4>
                     <p className="body-md text-muted-foreground">
@@ -110,7 +110,7 @@ export default function AboutPage() {
               {/* Philosophy */}
               <section>
                 <h3 className="heading-md font-bold text-foreground mb-6 sm:mb-8">Philosophy</h3>
-                <div className="bg-card border border-border rounded-lg card-mobile">
+                <div className="card-luxury card-mobile">
                   <blockquote className="heading-sm font-light text-foreground italic mb-4 sm:mb-6 text-center">
                     "Art is a collective act. Everything affects us and we combine the pieces in our artworks. 
                     All though mine is pretty not controlled version of making art, it creates itself sometimes... 

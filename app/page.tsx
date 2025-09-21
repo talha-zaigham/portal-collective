@@ -17,8 +17,8 @@ export default function HomePage() {
 
               <div className="grid-responsive gap-8 sm:gap-12">
                 <div className="text-center space-y-4 sm:space-y-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-card/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent rounded-full animate-pulse"></div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto glass-luxury rounded-full flex items-center justify-center border border-accent/30">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent rounded-full animate-pulse glow-luxury"></div>
                   </div>
                   <h4 className="heading-sm font-semibold text-foreground">Curated Excellence</h4>
                   <p className="body-md text-muted-foreground leading-relaxed px-4">
@@ -27,8 +27,8 @@ export default function HomePage() {
                 </div>
 
                 <div className="text-center space-y-4 sm:space-y-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-card/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-foreground rounded-full"></div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto glass-luxury rounded-full flex items-center justify-center border border-accent/30">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-foreground rounded-full glow-luxury"></div>
                   </div>
                   <h4 className="heading-sm font-semibold text-foreground">Authentic Provenance</h4>
                   <p className="body-md text-muted-foreground leading-relaxed px-4">
@@ -37,8 +37,8 @@ export default function HomePage() {
                 </div>
 
                 <div className="text-center space-y-4 sm:space-y-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-card/50 backdrop-blur-sm rounded-full flex items-center justify-center border border-accent/30">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent rounded-full animate-pulse"></div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto glass-luxury rounded-full flex items-center justify-center border border-accent/30">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent rounded-full animate-pulse glow-luxury"></div>
                   </div>
                   <h4 className="heading-sm font-semibold text-foreground">Collector Services</h4>
                   <p className="body-md text-muted-foreground leading-relaxed px-4">
@@ -50,26 +50,26 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Call to Action Section */}
+        {/* Enhanced Call to Action Section */}
         <section className="py-20 border-t border-border/50">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center space-y-8">
-              <h3 className="text-3xl md:text-4xl font-bold tracking-wide">
+              <h3 className="heading-lg font-bold tracking-wide cosmic-text">
                 Ready to <span className="text-accent">Explore</span> the <span className="text-accent">Cosmic Void</span>?
               </h3>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              <p className="body-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 Step through the portal and discover what the collective consciousness sees in the infinite patterns of cosmic ink.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <a 
                   href="/portal" 
-                  className="px-8 py-4 bg-accent text-background font-semibold rounded-lg hover:bg-accent/90 transition-colors duration-300 shadow-lg hover:shadow-xl"
+                  className="btn-luxury btn-luxury-responsive"
                 >
                   Enter Portal
                 </a>
                 <a 
                   href="/gallery" 
-                  className="px-8 py-4 border border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-colors duration-300"
+                  className="btn-luxury-secondary btn-luxury-responsive"
                 >
                   View Gallery
                 </a>
@@ -78,56 +78,56 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured Interpretations Preview */}
+        {/* Enhanced Featured Interpretations Preview */}
         <section className="py-20 border-t border-border/50">
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">
-              <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 tracking-wide">
+              <h3 className="heading-lg font-bold text-center mb-16 tracking-wide cosmic-text">
                 Recent <span className="text-accent">Cosmic Visions</span> from the Collective
               </h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-card/30 backdrop-blur-sm rounded-lg p-6 border border-accent/20 hover:border-accent/40 transition-colors duration-300">
+              <div className="grid-responsive gap-6 sm:gap-8">
+                <div className="glass-luxury luxury-hover p-6 sm:p-8">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                      <span className="text-sm text-accent">◊</span>
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center glow-luxury cosmic-float">
+                      <span className="text-sm sm:text-base text-accent cosmic-pulse">◊</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">Anonymous</span>
+                    <span className="text-sm sm:text-base text-muted-foreground font-medium">Anonymous</span>
                   </div>
-                  <p className="text-foreground italic leading-relaxed">
+                  <p className="text-foreground italic leading-relaxed cosmic-text body-md">
                     "Two galaxies merging in eternal dance, their cosmic embrace creating new stars..."
                   </p>
                 </div>
 
-                <div className="bg-card/30 backdrop-blur-sm rounded-lg p-6 border border-accent/20 hover:border-accent/40 transition-colors duration-300">
+                <div className="glass-luxury luxury-hover p-6 sm:p-8">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                      <span className="text-sm text-accent">✦</span>
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center glow-luxury cosmic-float">
+                      <span className="text-sm sm:text-base text-accent cosmic-pulse">✦</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">Anonymous</span>
+                    <span className="text-sm sm:text-base text-muted-foreground font-medium">Anonymous</span>
                   </div>
-                  <p className="text-foreground italic leading-relaxed">
+                  <p className="text-foreground italic leading-relaxed cosmic-text body-md">
                     "The birth of consciousness itself, emerging from the void like a cosmic flower..."
                   </p>
                 </div>
 
-                <div className="bg-card/30 backdrop-blur-sm rounded-lg p-6 border border-accent/20 hover:border-accent/40 transition-colors duration-300">
+                <div className="glass-luxury luxury-hover p-6 sm:p-8">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                      <span className="text-sm text-accent">◈</span>
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center glow-luxury cosmic-float">
+                      <span className="text-sm sm:text-base text-accent cosmic-pulse">◈</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">Anonymous</span>
+                    <span className="text-sm sm:text-base text-muted-foreground font-medium">Anonymous</span>
                   </div>
-                  <p className="text-foreground italic leading-relaxed">
+                  <p className="text-foreground italic leading-relaxed cosmic-text body-md">
                     "A portal to another dimension, where time flows backwards and dreams become reality..."
                   </p>
                 </div>
               </div>
 
-              <div className="text-center mt-8">
+              <div className="text-center mt-8 sm:mt-12">
                 <a 
                   href="/portal" 
-                  className="text-accent hover:text-accent/80 transition-colors duration-300 font-medium"
+                  className="text-accent hover:text-accent/80 transition-colors duration-300 font-medium body-lg luxury-hover"
                 >
                   See more interpretations →
                 </a>
@@ -137,17 +137,6 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border/50 mt-12 sm:mt-16 lg:mt-20">
-        <div className="container py-8 sm:py-12">
-          <div className="text-center space-y-3 sm:space-y-4">
-            <p className="body-sm text-muted-foreground">© 2024 PORTAL – Collective Ink. All rights reserved.</p>
-            <p className="body-sm text-muted-foreground px-4">
-              Transforming contemporary art collection through digital innovation.
-            </p>
-          </div>
-        </div>
-      </footer>
     </CosmicBackground>
   )
 }

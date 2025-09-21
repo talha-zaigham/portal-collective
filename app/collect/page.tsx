@@ -61,9 +61,9 @@ export default function CollectPage() {
       <main className="section-padding">
         <div className="container">
           <div className="max-w-6xl mx-auto">
-            {/* Hero Section */}
+            {/* Enhanced Hero Section */}
             <div className="text-center mb-16 sm:mb-20">
-              <h2 className="heading-xl font-bold mb-6 sm:mb-8">
+              <h2 className="heading-xl font-bold mb-6 sm:mb-8 cosmic-text">
                 <span className="text-foreground">Collect</span>
                 <br />
                 <span className="text-accent">Cosmic Art</span>
@@ -77,10 +77,10 @@ export default function CollectPage() {
             <div className="grid-responsive-2 gap-8 lg:gap-12 xl:gap-16">
               {/* Collection Information */}
               <div className="space-y-8 sm:space-y-12 order-2 lg:order-1">
-                {/* Investment Value */}
+                {/* Enhanced Investment Value */}
                 <section>
-                  <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6">Investment Value</h3>
-                  <div className="bg-card border border-border rounded-lg card-mobile space-y-3 sm:space-y-4">
+                  <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6 cosmic-text">Investment Value</h3>
+                  <div className="card-luxury card-mobile space-y-3 sm:space-y-4 luxury-hover">
                     <div className="flex items-center justify-between">
                       <span className="body-sm text-muted-foreground">Starting Price Range</span>
                       <span className="text-accent font-semibold">$1,000 - $10,000</span>
@@ -100,12 +100,12 @@ export default function CollectPage() {
                   </div>
                 </section>
 
-                {/* Collector Benefits */}
+                {/* Enhanced Collector Benefits */}
                 <section>
-                  <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6">Collector Benefits</h3>
+                  <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6 cosmic-text">Collector Benefits</h3>
                   <div className="space-y-3 sm:space-y-4">
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0">
+                    <div className="flex items-start space-x-3 sm:space-x-4 luxury-hover">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0 glow-luxury">
                         <span className="text-accent text-xs sm:text-sm">✓</span>
                       </div>
                       <div>
@@ -113,8 +113,8 @@ export default function CollectPage() {
                         <p className="body-sm text-muted-foreground">First access to new releases and private viewings</p>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0">
+                    <div className="flex items-start space-x-3 sm:space-x-4 luxury-hover">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0 glow-luxury">
                         <span className="text-accent text-xs sm:text-sm">✓</span>
                       </div>
                       <div>
@@ -122,8 +122,8 @@ export default function CollectPage() {
                         <p className="body-sm text-muted-foreground">Personal consultation and premium delivery</p>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0">
+                    <div className="flex items-start space-x-3 sm:space-x-4 luxury-hover">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0 glow-luxury">
                         <span className="text-accent text-xs sm:text-sm">✓</span>
                       </div>
                       <div>
@@ -131,8 +131,8 @@ export default function CollectPage() {
                         <p className="body-sm text-muted-foreground">Complete provenance and market analysis</p>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3 sm:space-x-4">
-                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0">
+                    <div className="flex items-start space-x-3 sm:space-x-4 luxury-hover">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent/20 rounded-full flex items-center justify-center mt-0.5 sm:mt-1 flex-shrink-0 glow-luxury">
                         <span className="text-accent text-xs sm:text-sm">✓</span>
                       </div>
                       <div>
@@ -268,7 +268,7 @@ export default function CollectPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting || !formData.name || !formData.email}
-                    className="btn-luxury btn-mobile-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-luxury btn-luxury-responsive-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center space-x-3">
@@ -293,19 +293,19 @@ export default function CollectPage() {
               </div>
             </div>
 
-            {/* Contact Information */}
-            <div className="mt-16 sm:mt-20 text-center bg-card border border-border rounded-lg card-mobile">
-              <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6">Direct Contact</h3>
+            {/* Enhanced Contact Information */}
+            <div className="mt-16 sm:mt-20 text-center card-luxury card-mobile luxury-hover">
+              <h3 className="heading-sm font-bold text-foreground mb-4 sm:mb-6 cosmic-text">Direct Contact</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-                <div>
+                <div className="luxury-hover">
                   <h4 className="font-semibold text-accent mb-2 body-md">Email</h4>
                   <p className="body-sm text-muted-foreground">collect@portalcollective.ink</p>
                 </div>
-                <div>
+                <div className="luxury-hover">
                   <h4 className="font-semibold text-accent mb-2 body-md">Phone</h4>
                   <p className="body-sm text-muted-foreground">+1 (555) 123-4567</p>
                 </div>
-                <div>
+                <div className="luxury-hover">
                   <h4 className="font-semibold text-accent mb-2 body-md">Response Time</h4>
                   <p className="body-sm text-muted-foreground">Within 24 hours</p>
                 </div>

@@ -20,6 +20,58 @@ interface InkblotData {
   }>
 }
 
+// Component for individual response cards with truncation
+function ResponseCard({ response, responseIdentity, onVote }: { 
+  response: any, 
+  responseIdentity: any, 
+  onVote: (id: string) => void 
+}) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const maxLength = 150 // Characters to show before truncation
+  
+  const shouldTruncate = response.text.length > maxLength
+  const displayText = isExpanded ? response.text : response.text.substring(0, maxLength)
+  
+  return (
+    <div className="relative bg-card border border-accent/20 rounded-lg p-4 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 overflow-hidden">
+      <div className="flex items-start space-x-3 min-w-0">
+        <AnonymousAvatar 
+          identity={responseIdentity} 
+          size="sm" 
+          showName={false}
+        />
+        <div className="flex-1 min-w-0">
+          <p className="text-foreground mb-2 leading-relaxed break-words overflow-hidden">
+            {displayText}
+            {shouldTruncate && !isExpanded && (
+              <span className="text-muted-foreground">...</span>
+            )}
+          </p>
+          {shouldTruncate && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-accent hover:text-accent/80 text-sm font-medium transition-colors duration-200 mb-2"
+            >
+              {isExpanded ? 'Show less' : 'Read more'}
+            </button>
+          )}
+          <div className="flex items-center justify-between text-sm text-muted-foreground">
+            <span>
+              {responseIdentity.cosmicName} • {response.votes} votes
+            </span>
+            <button
+              onClick={() => onVote(response.id)}
+              className="text-accent hover:text-accent/80 transition-colors duration-200"
+            >
+              ↑ Vote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function InteractivePortal() {
   const router = useRouter()
   const [currentInkblot, setCurrentInkblot] = useState(0)
@@ -37,7 +89,7 @@ export default function InteractivePortal() {
     setIsClient(true)
     setAnonymousIdentity(getAnonymousIdentity())
   }, [])
-  const maxChars = 300
+  const maxChars = 500
 
   // Load real inkblot data and submissions
   useEffect(() => {
@@ -145,9 +197,17 @@ export default function InteractivePortal() {
         setTimeout(() => {
           setShowResponses(false)
         }, 3000)
+      } else {
+        const errorData = await response.json()
+        if (errorData.reason) {
+          setMessage(`Content quality issue: ${errorData.reason}. Please provide a more meaningful description of what you see.`)
+        } else {
+          setMessage(errorData.error || 'Something went wrong. Please try again.')
+        }
       }
     } catch (error) {
       console.error('Submission error:', error)
+      setMessage('Connection error. Please try again.')
     }
 
     setIsSubmitting(false)
@@ -213,14 +273,14 @@ export default function InteractivePortal() {
 
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-6xl mx-auto">
-          {/* Header */}
+          {/* Enhanced Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+            <h1 className="heading-xl font-bold mb-6 tracking-tight cosmic-text">
               <span className="text-foreground">Cosmic</span>
               <br />
               <span className="text-accent">Consciousness</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="body-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Enter the void. Share your perception. Become part of the collective art.
             </p>
           </div>
@@ -231,27 +291,27 @@ export default function InteractivePortal() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Inkblot Display */}
+            {/* Enhanced Inkblot Display */}
             <div className="space-y-8">
               <div className="relative">
-                <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-card to-muted border border-border/50 shadow-2xl relative">
+                <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-card to-muted border border-border/50 shadow-2xl relative luxury-hover">
                   {inkblots[currentInkblot] && (
                     <ProtectedImage
                       src={inkblots[currentInkblot].image}
                       alt={`Cosmic Inkblot ${currentInkblot + 1}`}
-                      className="w-full h-full"
+                      className="w-full h-full transition-transform duration-500 hover:scale-105"
                       watermarkText="PORTAL COLLECTIVE INK"
                       showOverlay={false}
                     />
                   )}
                   
-                  {/* Cosmic overlay */}
+                  {/* Enhanced cosmic overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/10 to-black/20 pointer-events-none" />
                   
-                  {/* Inkblot Label - Subtle positioning to avoid conflicts */}
+                  {/* Enhanced inkblot label */}
                   <div className="absolute bottom-4 right-4 z-30">
-                    <div className="bg-background/95 backdrop-blur-sm px-3 py-1.5 rounded-full border border-accent/20 shadow-lg">
-                      <span className="text-accent/80 font-medium text-xs tracking-wide">
+                    <div className="bg-background/95 backdrop-blur-md px-3 py-1.5 rounded-lg border border-accent/20 shadow-lg">
+                      <span className="text-accent/80 font-medium text-xs tracking-wide cosmic-text">
                         {inkblots[currentInkblot]?.id.toUpperCase().replace('-', ' ') || `INKBLOT ${currentInkblot + 1}`}
                       </span>
                     </div>
@@ -274,12 +334,12 @@ export default function InteractivePortal() {
                 ))}
               </div>
 
-              {/* Instructions */}
+              {/* Enhanced Instructions */}
               <div className="text-center space-y-4">
-                <p className="text-muted-foreground text-lg">
+                <p className="text-muted-foreground body-lg cosmic-text">
                   What do you see in this cosmic pattern?
                 </p>
-                <p className="text-sm text-muted-foreground/70">
+                <p className="body-sm text-muted-foreground/70">
                   There are no wrong answers. Your perception becomes part of the collective art.
                 </p>
               </div>
@@ -289,9 +349,9 @@ export default function InteractivePortal() {
             <div className="space-y-8">
               {!showResponses ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Response Input */}
+                  {/* Enhanced Response Input */}
                   <div className="space-y-4">
-                    <label className="block text-lg font-medium text-foreground">
+                    <label className="block body-lg font-medium text-foreground cosmic-text">
                       Your Perception
                     </label>
                     <div className="relative">
@@ -302,7 +362,7 @@ export default function InteractivePortal() {
                           setCharCount(e.target.value.length)
                         }}
                         placeholder="Describe what emerges from the cosmic void..."
-                        className="w-full h-32 bg-card border border-border rounded-lg px-4 py-3 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none transition-all duration-200"
+                        className="w-full h-32 input-luxury resize-none"
                         maxLength={maxChars}
                         required
                       />
@@ -316,6 +376,11 @@ export default function InteractivePortal() {
                         </span>
                       </div>
                     </div>
+                    <p className="text-xs text-muted-foreground">
+                      <span className="text-accent">
+                        ✨ Share your unique perception with the collective consciousness
+                      </span>
+                    </p>
                   </div>
 
                   {/* Anonymous Toggle */}
@@ -332,11 +397,11 @@ export default function InteractivePortal() {
                     </label>
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Enhanced Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting || !userResponse.trim()}
-                    className="w-full bg-gradient-to-r from-accent to-accent/80 text-black font-semibold py-4 px-8 rounded-lg hover:from-accent/90 hover:to-accent/70 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                    className="w-full btn-luxury btn-luxury-responsive disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center space-x-3">
@@ -374,7 +439,7 @@ export default function InteractivePortal() {
                       .map((response, index) => {
                         // Generate a deterministic identity for each response
                         const symbols = ['◊', '◈', '✦', '◉', '◐', '◑']
-                        const colors = ['#d4af37', '#4a9eff', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b']
+                        const colors = ['#d4af37', '#d4af37', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b']
                         const responseIdentity = {
                           id: response.id,
                           symbol: symbols[index % symbols.length],
@@ -384,32 +449,12 @@ export default function InteractivePortal() {
                         }
                         
                         return (
-                          <div
+                          <ResponseCard
                             key={response.id}
-                            className="bg-card border border-border rounded-lg p-4 hover:border-accent/30 transition-colors duration-200"
-                          >
-                            <div className="flex items-start space-x-3">
-                              <AnonymousAvatar 
-                                identity={responseIdentity} 
-                                size="sm" 
-                                showName={false}
-                              />
-                              <div className="flex-1">
-                                <p className="text-foreground mb-2">{response.text}</p>
-                                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                                  <span>
-                                    {responseIdentity.cosmicName} • {response.votes} votes
-                                  </span>
-                                  <button
-                                    onClick={() => handleVote(response.id)}
-                                    className="text-accent hover:text-accent/80 transition-colors duration-200"
-                                  >
-                                    ↑ Vote
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                            response={response}
+                            responseIdentity={responseIdentity}
+                            onVote={handleVote}
+                          />
                         )
                       })}
                   </div>

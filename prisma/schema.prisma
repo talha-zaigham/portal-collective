@@ -12,7 +12,7 @@ model Submission {
   id           String   @id @default(cuid())
   createdAt    DateTime @default(now())
   inkblotId    String   // A, B, C, etc.
-  userResponse String   @db.VarChar(300)
+  userResponse String   @db.VarChar(500)
   username     String?
   email        String?
   displayPref  String   // "username" or "anonymous"
@@ -21,4 +21,18 @@ model Submission {
   votes        Int      @default(0)
 
   @@map("submissions")
+}
+
+model NewsletterSubscriber {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  subscriberType String   // "general" or "collector"
+  source        String   // "website", "portal", "gallery", etc.
+  status        String   @default("active") // "active", "unsubscribed", "bounced"
+  preferences   Json?    // Store AI personalization data
+  lastEngagement DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("newsletter_subscribers")
 }

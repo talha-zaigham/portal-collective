@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CosmicBackground from '@/components/CosmicBackground'
 import ProtectedImage from '@/components/ProtectedImage'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 // Mock data for completed artworks
 const artworks = [
@@ -74,9 +75,9 @@ export default function GalleryPage() {
     <CosmicBackground intensity="medium" className="pt-20">
       <main className="section-padding">
         <div className="container">
-          {/* Gallery Header */}
+          {/* Enhanced Gallery Header */}
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="heading-lg font-bold mb-4 sm:mb-6">
+            <h2 className="heading-lg font-bold mb-4 sm:mb-6 cosmic-text">
               <span className="text-foreground">Collective</span>
               <br />
               <span className="text-accent">Artworks</span>
@@ -90,8 +91,8 @@ export default function GalleryPage() {
           {/* Artworks Grid */}
           <div className="grid-responsive gap-6 sm:gap-8 mb-12 sm:mb-16">
             {artworks.map((artwork) => (
-              <div key={artwork.id} className="group bg-card border border-border rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300">
-                {/* Artwork Image */}
+              <div key={artwork.id} className="group card-luxury overflow-hidden luxury-hover">
+                {/* Enhanced Artwork Image */}
                 <div className="relative aspect-square overflow-hidden">
                   <ProtectedImage
                     src={artwork.image}
@@ -100,9 +101,9 @@ export default function GalleryPage() {
                     watermarkText="PORTAL COLLECTIVE INK"
                     showOverlay={false}
                   />
-                  {/* Status Badge */}
+                  {/* Enhanced Status Badge */}
                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30">
-                    <span className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-full ${
+                    <span className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-lg backdrop-blur-md ${
                       artwork.status === 'Available' 
                         ? 'bg-green-900/80 text-green-400 border border-green-800'
                         : artwork.status === 'Sold'
@@ -136,7 +137,7 @@ export default function GalleryPage() {
                     {artwork.status === 'Available' && (
                       <Link 
                         href="/collect" 
-                        className="btn-luxury btn-mobile text-sm"
+                        className="btn-luxury btn-luxury-responsive text-sm"
                       >
                         Inquire
                       </Link>
@@ -147,22 +148,36 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center bg-card border border-border rounded-lg card-mobile">
-            <h3 className="heading-sm font-bold text-foreground mb-3 sm:mb-4">
+          {/* Enhanced Call to Action */}
+          <div className="text-center card-luxury card-mobile luxury-hover">
+            <h3 className="heading-sm font-bold text-foreground mb-3 sm:mb-4 cosmic-text">
               Your Perception Could Be Next
             </h3>
             <p className="body-md text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
               Join the collective consciousness. Submit your interpretation of our inkblots 
               and see your words transformed into tangible art.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <Link href="/portal" className="btn-luxury btn-mobile">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8">
+              <Link href="/portal" className="btn-luxury btn-luxury-responsive">
                 Enter Portal
               </Link>
-              <Link href="/collect" className="btn-luxury-secondary btn-mobile">
+              <Link href="/collect" className="btn-luxury-secondary btn-luxury-responsive">
                 Contact Collector
               </Link>
+            </div>
+            
+            {/* Newsletter Signup - Custom styling for card integration */}
+            <div className="max-w-md mx-auto">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-accent/30 to-accent/60 flex items-center justify-center border border-accent/40">
+                    <span className="text-xs text-accent cosmic-pulse">◊</span>
+                  </div>
+                  <h4 className="text-sm font-semibold text-foreground tracking-wide">Stay Connected to the Cosmos</h4>
+                </div>
+                <p className="text-xs text-muted-foreground">Get exclusive updates on new artworks and collector insights.</p>
+                <NewsletterSignup variant="inline" />
+              </div>
             </div>
           </div>
         </div>
