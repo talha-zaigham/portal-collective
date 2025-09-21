@@ -31,6 +31,15 @@
     font-family: 'Inter', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     letter-spacing: -0.01em;
+    /* Hide Windows activation watermark overlay */
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Ensure full viewport coverage to minimize watermark visibility */
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
