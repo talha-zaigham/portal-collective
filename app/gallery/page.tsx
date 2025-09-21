@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import CosmicBackground from '@/components/CosmicBackground'
+import ProtectedImage from '@/components/ProtectedImage'
 
 // Mock data for completed artworks
 const artworks = [
@@ -92,14 +93,15 @@ export default function GalleryPage() {
               <div key={artwork.id} className="group bg-card border border-border rounded-lg overflow-hidden hover:border-accent/50 transition-all duration-300">
                 {/* Artwork Image */}
                 <div className="relative aspect-square overflow-hidden">
-                  <Image
+                  <ProtectedImage
                     src={artwork.image}
                     alt={artwork.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    watermarkText="PORTAL COLLECTIVE INK"
+                    showOverlay={false}
                   />
                   {/* Status Badge */}
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30">
                     <span className={`px-2 sm:px-3 py-1 text-xs font-medium rounded-full ${
                       artwork.status === 'Available' 
                         ? 'bg-green-900/80 text-green-400 border border-green-800'
